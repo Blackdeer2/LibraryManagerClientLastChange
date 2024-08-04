@@ -33,7 +33,7 @@ export class AuthorCreateComponent implements OnInit {
   }
 
   validateControl = (controlName: string) => {
-    if (this.authorForm?.get(controlName)?.invalid && this.authorForm?.get(controlName)?.touched)
+    if (this.authorForm.get(controlName)?.invalid && this.authorForm.get(controlName)?.touched)
       return true;
     
     return false;
@@ -46,7 +46,7 @@ export class AuthorCreateComponent implements OnInit {
     return false;
   }
   createAuthor = (authorFormValue: any) => {
-    if (this.authorForm?.valid)
+    if (this.authorForm.valid)
       this.executeAuthorCreation(authorFormValue);
   }
 
@@ -54,14 +54,14 @@ export class AuthorCreateComponent implements OnInit {
     const author: AuthorForCreation = {
       name: authorFormValue.name
     }
-    const apiUrl = 'api/owner';
+    const apiUrl = 'api/author';
     this.repository.createAuthor(apiUrl, author)
     .subscribe({
-      next: (own: Author) => {
+      next: (a: Author) => {
         const config: ModalOptions = {
           initialState: {
             modalHeaderText: 'Success Message',
-            modalBodyText: `Owner: ${own.name} created successfully`,
+            modalBodyText: `Author: ${a.name} created successfully`,
             okButtonText: 'OK'
           }
         };

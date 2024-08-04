@@ -9,7 +9,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { AppComponent } from '../app.component';
 import { AuthorCreateComponent } from './author-create/author-create.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 //import { SharedModule } from '../shared/shared.module';
 
 
@@ -24,14 +24,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AuthorRoutingModule,
     ReactiveFormsModule ,
     BsDatepickerModule.forRoot(),
+    
     //ModalModule.forRoot() // Додайте тут
     //SharedModule
   ],
-  providers: [
-    provideClientHydration(),
-    [DatePipe],
-  ],
-  
-  bootstrap: [AppComponent]
 })
 export class AuthorModule { }

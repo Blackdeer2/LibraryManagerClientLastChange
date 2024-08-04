@@ -10,6 +10,10 @@ import { MenuComponent } from './menu/menu.component';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
+import { DatePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthorModule } from './author/author.module';
+import { BookModule } from './book/book.module';
 
 @NgModule({
   declarations: [
@@ -25,10 +29,10 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
     BrowserAnimationsModule,
     HttpClientModule,
     CollapseModule.forRoot(),
+    AuthorModule,
+    BookModule
   ],
-  providers: [
-    provideClientHydration()
-  ],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

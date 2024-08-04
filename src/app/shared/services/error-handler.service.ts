@@ -1,12 +1,15 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ErrorModalComponent } from './../modals/error-modal/error-modal.component';
+import { BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorHandlerService {
   public errorMessage: string = '';
+  modal: any;
   constructor(private router: Router) { }
   public handleError = (error: HttpErrorResponse) => {
     if (error.status === 500) {
@@ -28,9 +31,19 @@ export class ErrorHandlerService {
     this.router.navigate(['/404']);
   }
   private handleOtherError = (error: HttpErrorResponse) => {
-    this.createErrorMessage(error); //TODO: this will be fixed later; 
+    this.createErrorMessage(error);
+
+    const config: ModalOptions = {
+      initialState: {
+        modalHeaderText: 'Error Message',
+        modalBodyText: this.errorMessage,
+        okButtonText: 'OK'
+      }
+    };
+    this.modal.show(ErrorModalComponent, config);
   }
   private createErrorMessage = (error: HttpErrorResponse) => {
     this.errorMessage = error.error ? error.error : error.statusText;
   }
+  
 }

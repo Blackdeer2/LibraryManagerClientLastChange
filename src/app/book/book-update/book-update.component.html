@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <form [formGroup]="bookForm" autocomplete="off" novalidate (ngSubmit)="updateBook(bookForm.value)">
+      <div class="card card-body bg-light mb-2 mt-2">
+        
+        <div class="row mb-3">
+            <label for="name" class="col-form-label col-md-2">Title </label>
+            <div class="col-md-5">
+              <input type="text" formControlName="name" id="name" class="form-control" />
+            </div>
+            <div class="col-md-5">
+              <em *ngIf="validateControl('name') 
+              && hasError('name', 'required')">Title is required</em>
+              <em *ngIf="validateControl('name') 
+              && hasError('name', 'maxlength')">Maximum allowed length is 60 characters.</em>
+            </div>
+          </div>
+
+      </div>
+    </form>
+  </div>
