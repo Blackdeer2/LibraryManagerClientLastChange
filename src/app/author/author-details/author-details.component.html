@@ -1,0 +1,28 @@
+<div class="card card-body bg-light mb-2 mt-2">
+    <div class="row">
+      <div class="col-md-3">
+        <strong>Author name:</strong>
+      </div>
+      <div class="col-md-3">
+        {{author?.name}}
+      </div>
+    </div>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Books</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let book of author?.books">
+              <td>{{book?.title}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
