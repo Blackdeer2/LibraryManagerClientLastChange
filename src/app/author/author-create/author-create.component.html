@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <form [formGroup]="authorForm" autocomplete="off" novalidate (ngSubmit)="createAuthor(authorForm.value)">
+      <div class="card card-body bg-light mb-2 mt-2">
+   
+        <div class="row mb-3">
+          <label for="name" class="col-form-label col-md-2">Name of the author: </label>
+          <div class="col-md-5">
+            <input type="text" formControlName="name" id="name" class="form-control" />
+          </div>
+          <div class="col-md-5">
+            <em *ngIf="validateControl('name') 
+            && hasError('name', 'required')">Name is required</em>
+            <em *ngIf="validateControl('name') 
+            && hasError('name', 'maxlength')">Maximum allowed length is 60 characters.</em>
+          </div>
+        </div>
+   
+        <br><br>
+   
+        <div class="mb-3 row">
+            <div class="offset-5 col-md-1">
+                <button type="submit" class="btn btn-info" [disabled]="!authorForm.valid">Save</button>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-danger" (click)="redirectToAuthorList()">Cancel</button>
+            </div>
+        </div>
+        
+      </div>
+    </form>
+  </div>
