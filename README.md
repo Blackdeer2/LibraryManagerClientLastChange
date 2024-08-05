@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
 
-## Restrictions
+## Limitations
 
 Currently, the website only allows you to view lists of books and authors. Functions such as adding, updating, and deleting books or authors, as well as search functions, are not implemented.
 
